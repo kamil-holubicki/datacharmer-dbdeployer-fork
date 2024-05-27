@@ -177,7 +177,7 @@ func CreateMasterSlaveReplication(sandboxDef SandboxDef, origin string, nodes in
 	changeMasterExtra := ""
 	masterAutoPosition := ""
 	if sandboxDef.GtidOptions != "" {
-		masterAutoPosition += ", MASTER_AUTO_POSITION=1"
+		masterAutoPosition += ", SOURCE_AUTO_POSITION=1"
 		logger.Printf("Adding MASTER_AUTO_POSITION to slaves setup\n")
 	}
 	// 8.0.11
@@ -188,7 +188,7 @@ func CreateMasterSlaveReplication(sandboxDef SandboxDef, origin string, nodes in
 	}
 	if isMinimumNativeAuthPlugin {
 		if !sandboxDef.NativeAuthPlugin {
-			sandboxDef.ChangeMasterOptions = append(sandboxDef.ChangeMasterOptions, "GET_MASTER_PUBLIC_KEY=1")
+			sandboxDef.ChangeMasterOptions = append(sandboxDef.ChangeMasterOptions, "GET_SOURCE_PUBLIC_KEY=1")
 		}
 	}
 	slaves := nodes - 1
