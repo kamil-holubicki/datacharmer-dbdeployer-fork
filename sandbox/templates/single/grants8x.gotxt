@@ -36,7 +36,7 @@ set default role R_READ_WRITE to msandbox_rw@'{{.RemoteAccess}}';
 
 create user if not exists msandbox_ro@'{{.RemoteAccess}}' identified by '{{.DbPassword}}';
 create user if not exists msandbox_ro@'localhost' identified by '{{.DbPassword}}';
-create user if not exists {{.RplUser}}@'{{.RemoteAccess}}' identified WITH mysql_native_password by '{{.RplPassword}}';
+create user if not exists {{.RplUser}}@'{{.RemoteAccess}}' identified by '{{.RplPassword}}';
 
 grant R_READ_ONLY to msandbox_ro@'{{.RemoteAccess}}';
 set default role R_READ_ONLY to msandbox_ro@'{{.RemoteAccess}}';
